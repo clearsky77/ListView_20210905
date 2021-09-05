@@ -19,7 +19,9 @@ class StudentAdapter(
         var tempRow = convertView //임시로 한 줄에 해당하는 것을 만들어 줌.
         if (tempRow == null){
             tempRow = mInflater.inflate(R.layout.student_list_item, null) // R이라는 것은 res 폴도다!
-
         }
+        val row = tempRow!!
+//        getView 작업의 결과물로 지정.
+                return row
     }
 }
