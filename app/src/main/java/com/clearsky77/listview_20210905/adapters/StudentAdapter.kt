@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.TextView
 import com.clearsky77.listview_20210905.R
 import com.clearsky77.listview_20210905.datas.StudentData
 
@@ -18,10 +19,15 @@ class StudentAdapter(
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         var tempRow = convertView //임시로 한 줄에 해당하는 것을 만들어 줌.
         if (tempRow == null){
-            tempRow = mInflater.inflate(R.layout.student_list_item, null) // R이라는 것은 res 폴도다!
+            tempRow = mInflater.inflate(R.layout.student_list_item, null) // R이라는 것은 res 폴더다!
         }
         val row = tempRow!!
 //        getView 작업의 결과물로 지정.
+        val data = mList[position]
+//        row의 내부에서 필요한 요소를 가져오자
+        val nameTxt = row.findViewById<TextView>(R.id.nameText)
+        nameTxt.text = data.name
+        
                 return row
     }
 }
