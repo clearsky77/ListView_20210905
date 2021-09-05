@@ -1,9 +1,11 @@
 package com.clearsky77.listview_20210905
 
+import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.clearsky77.listview_20210905.adapters.StudentAdapter
 import com.clearsky77.listview_20210905.datas.StudentData
 import kotlinx.android.synthetic.main.activity_main.*
@@ -13,6 +15,7 @@ class MainActivity : AppCompatActivity() {
 
     //변수만 만들고, 대입은 나중에
     lateinit var mAdapter: StudentAdapter //나중에 StudentAdepter 형태로 들어 올 것이다.
+    //이렇게 만드는 이유는 초기화를 나중에 해줘야 에러가 나지 않기 때문
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,10 +52,20 @@ class MainActivity : AppCompatActivity() {
             val clickedStudent = mStudentList[position]
             //누가 길게 눌렸는지 토스트 출력.
 //            Toast.makeText(this, "${clickedStudent.name}이(가) 길게 눌림.", Toast.LENGTH_SHORT).show()
+
+//            경고창. 진짜 삭제할 것인지 확인 -> 확인 눌렀을 때만 삭제.
+            val alert = AlertDialog.Builder(this)
+            alert.setTitle("학생 삭제 확인")
+            alert.setMessage("${clickedStudent.name}을(를) 삭제하시겠습니까?")
+            alert.setPositiveButton("확인", DialogInterface.OnClickListener { dialogInterface, i ->
+//                확인을 누르면 실행할 부분
             //목록(mStudentList)에서 제거 => 리스트뷰에서도 빠지게.
             mStudentList.remove(clickedStudent)
 //            리스트 뷰의 어댑터에 변경 사항을 공지해줘야한다. 아니면 에러.
             mAdapter.notifyDataSetChanged()
+            })
+            alert.setNegativeButton("취소",null)
+            alert.show()
 
             //마지막에 결과로 true/false 지정 필요
             return@setOnItemLongClickListener true //false를 하면 롱클릭 실행 후 그냥 클릭도 실행된다.
