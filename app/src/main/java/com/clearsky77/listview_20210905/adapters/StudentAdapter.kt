@@ -26,8 +26,12 @@ class StudentAdapter(
         val data = mList[position]
 //        row의 내부에서 필요한 요소를 가져오자
         val nameTxt = row.findViewById<TextView>(R.id.nameText)
+        val addressTxt = row.findViewById<TextView>(R.id.addressTxt)
+        val ageTxt = row.findViewById<TextView>(R.id.ageTxt)
         nameTxt.text = data.name
-        
+        addressTxt.text = data.name
+        //addressTxt.text = data.name
+
                 return row
     }
 }
