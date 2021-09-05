@@ -36,17 +36,25 @@ class MainActivity : AppCompatActivity() {
 
 //        리스튜뷰의 각 줄이 눌렸을 때 이벤트 처리
         studentListView.setOnItemClickListener { adapterView, view, position, l ->
-
-//            세번째 매개 변수: 어느 줄이 눌렸는지 줄 위치 알려줌.
+            //세번째 매개 변수: 어느 줄이 눌렸는지 줄 위치 알려줌.
             Log.d("리스트뷰 눌린 줄:",position.toString())
-
-//            클릭된 사람의 이름을 토스트로 띄워보자
-//            position을 가지고 클릭된 사람이 누구인가?
-
+            // 클릭된 사람의 이름을 토스트로 띄워보자
+            // position을 가지고 클릭된 사람이 누구인가?
             var clickedStudent = mStudentList[position]
-
             Toast.makeText(this, clickedStudent.name, Toast.LENGTH_SHORT).show()
+        }
+
+//        리스튜뷰의 아이템 길게 눌렀을 때
+        studentListView.setOnItemLongClickListener { adapterView, view, position, l ->
+            //누가 길게 눌렸는지 토스트 출력.
+            val clickedStudent = mStudentList[position]
+            Toast.makeText(this, "${clickedStudent.name}이(가) 길게 눌림.", Toast.LENGTH_SHORT).show()
+
+            //마지막에 결과로 true/false 지정 필요
+            return@setOnItemLongClickListener true
 
         }
+
+
     }
 }
