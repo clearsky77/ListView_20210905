@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
 
     //변수만 만들고, 대입은 나중에
     lateinit var mAdapter: StudentAdapter //나중에 StudentAdepter 형태로 들어 올 것이다.
-    //이렇게 만드는 이유는 초기화를 나중에 해줘야 에러가 나지 않기 때문
+    //멤버 변수로 밖에 만드는 이유는 이렇게 따로 만들고 초기화를 나중에 해줘야 에러가 나지 않기 때문
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,14 +23,14 @@ class MainActivity : AppCompatActivity() {
 
         //임시방편: 코드에 타이핑해서 추가
         mStudentList.add(StudentData("김첫째", 1988, "서울시 동대문구"))
-        mStudentList.add(StudentData("김이이", 1988, "서울시 동대문구"))
-        mStudentList.add(StudentData("김삼삼", 1988, "서울시 동대문구"))
-        mStudentList.add(StudentData("김사사", 1988, "서울시 동대문구"))
-        mStudentList.add(StudentData("김오오", 1988, "서울시 동대문구"))
-        mStudentList.add(StudentData("김육육", 1988, "서울시 동대문구"))
-        mStudentList.add(StudentData("김칠칠", 1988, "서울시 동대문구"))
-        mStudentList.add(StudentData("김팔팔", 1988, "서울시 동대문구"))
-        mStudentList.add(StudentData("김구구", 1988, "서울시 동대문구"))
+        mStudentList.add(StudentData("김이이", 1987, "서울시 동대문구"))
+        mStudentList.add(StudentData("김삼삼", 1986, "서울시 동대문구"))
+        mStudentList.add(StudentData("김사사", 1985, "서울시 동대문구"))
+        mStudentList.add(StudentData("김오오", 1984, "서울시 동대문구"))
+        mStudentList.add(StudentData("김육육", 1983, "서울시 동대문구"))
+        mStudentList.add(StudentData("김칠칠", 1982, "서울시 동대문구"))
+        mStudentList.add(StudentData("김팔팔", 1981, "서울시 동대문구"))
+        mStudentList.add(StudentData("김구구", 1980, "서울시 동대문구"))
 
         mAdapter = StudentAdapter(this, R.layout.student_list_item, mStudentList)
 
